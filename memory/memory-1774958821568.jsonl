@@ -1,0 +1,33 @@
+{"t":"2026-03-31T12:07:01.637Z","type":"connect_attempt","payload":{"username":"player","host":"127.0.0.1","port":62372,"version":"1.13.2"}}
+{"t":"2026-03-31T12:07:03.011Z","type":"spawn","payload":{"username":"player","host":"127.0.0.1","port":62372,"version":"1.13.2"}}
+{"t":"2026-03-31T12:07:03.011Z","type":"knowledge_bootstrap","payload":{"roadmap":[{"id":"wood_age","goal":"Get wood and craft planks + sticks."},{"id":"stone_age","goal":"Craft wooden pickaxe, mine cobblestone, craft stone tools."},{"id":"iron_age","goal":"Mine iron ore, smelt iron, craft iron tools and armor."},{"id":"diamond_age","goal":"Find diamonds and craft diamond pickaxe."},{"id":"nether_prep","goal":"Build portal, get blaze rods + ender pearls."},{"id":"stronghold","goal":"Locate stronghold and fill end portal."},{"id":"end_game","goal":"Enter the End and defeat the Ender Dragon."}]}}
+{"t":"2026-03-31T12:07:07.020Z","type":"player_seen","payload":{"user":"misteragent0","pos":{"x":11.91528601208637,"y":68.87099510408487,"z":117.12924574405008}}}
+{"t":"2026-03-31T12:07:08.015Z","type":"auto_tick","payload":{"pos":{"x":3.128067780940557,"y":63,"z":101.12779350443913},"food":17,"health":12.166666030883789,"stage":"wood_age"}}
+{"t":"2026-03-31T12:07:11.028Z","type":"player_seen","payload":{"user":"misteragent0","pos":{"x":10.52661413708637,"y":68.87099510408487,"z":114.91464613467508}}}
+{"t":"2026-03-31T12:07:11.132Z","type":"food_hunt_attack","payload":{"mob":"cow","pos":{"x":1.0139343482968386,"y":63.964803911447525,"z":118.5500000119209}}}
+{"t":"2026-03-31T12:07:15.036Z","type":"player_seen","payload":{"user":"misteragent0","pos":{"x":10.52661413708637,"y":68.87099510408487,"z":114.91464613467508}}}
+{"t":"2026-03-31T12:07:19.036Z","type":"player_seen","payload":{"user":"misteragent0","pos":{"x":10.52661413708637,"y":68.87099510408487,"z":114.91464613467508}}}
+{"t":"2026-03-31T12:07:23.038Z","type":"player_seen","payload":{"user":"misteragent0","pos":{"x":10.526773883832206,"y":68.87099510408487,"z":114.91477985106278}}}
+{"t":"2026-03-31T12:07:24.230Z","type":"chat","payload":{"from":"misteragent0","message":"bot auto on"}}
+{"t":"2026-03-31T12:07:27.048Z","type":"player_seen","payload":{"user":"misteragent0","pos":{"x":10.076334430707206,"y":68.87099510408487,"z":116.51048297606278}}}
+{"t":"2026-03-31T12:07:31.054Z","type":"player_seen","payload":{"user":"misteragent0","pos":{"x":1.538492633832206,"y":68.87099510408487,"z":122.02928180418778}}}
+{"t":"2026-03-31T12:07:35.066Z","type":"player_seen","payload":{"user":"misteragent0","pos":{"x":-2.496826171875,"y":63,"z":93.182373046875}}}
+{"t":"2026-03-31T12:07:38.056Z","type":"auto_tick","payload":{"pos":{"x":-2.5,"y":63,"z":93.5},"food":20,"health":20,"stage":"wood_age"}}
+{"t":"2026-03-31T12:07:39.079Z","type":"player_seen","payload":{"user":"misteragent0","pos":{"x":-3.8876953125,"y":64.86279296875,"z":98.281494140625}}}
+{"t":"2026-03-31T12:07:43.086Z","type":"player_seen","payload":{"user":"misteragent0","pos":{"x":-3.231689453125,"y":63.367919921875,"z":95.869140625}}}
+{"t":"2026-03-31T12:07:47.093Z","type":"player_seen","payload":{"user":"misteragent0","pos":{"x":-3.512939453125,"y":63.367919921875,"z":96.6865234375}}}
+{"t":"2026-03-31T12:07:49.180Z","type":"chat","payload":{"from":"misteragent0","message":"bot auto off"}}
+{"t":"2026-03-31T12:07:51.109Z","type":"player_seen","payload":{"user":"misteragent0","pos":{"x":-3.512939453125,"y":63.367919921875,"z":96.6865234375}}}
+{"t":"2026-03-31T12:07:55.118Z","type":"player_seen","payload":{"user":"misteragent0","pos":{"x":-2.998981095282214,"y":63,"z":95.14482021401687}}}
+{"t":"2026-03-31T12:07:59.129Z","type":"player_seen","payload":{"user":"misteragent0","pos":{"x":-2.998981095282214,"y":63,"z":95.14482021401687}}}
+{"t":"2026-03-31T12:08:03.136Z","type":"player_seen","payload":{"user":"misteragent0","pos":{"x":-2.998981095282214,"y":63,"z":95.14482021401687}}}
+{"t":"2026-03-31T12:08:07.136Z","type":"player_seen","payload":{"user":"misteragent0","pos":{"x":-2.998981095282214,"y":63,"z":95.14482021401687}}}
+{"t":"2026-03-31T12:08:11.152Z","type":"player_seen","payload":{"user":"misteragent0","pos":{"x":-2.998981095282214,"y":63,"z":95.14482021401687}}}
+{"t":"2026-03-31T12:08:15.165Z","type":"player_seen","payload":{"user":"misteragent0","pos":{"x":-2.998981095282214,"y":63,"z":95.14482021401687}}}
+{"t":"2026-03-31T12:08:19.179Z","type":"player_seen","payload":{"user":"misteragent0","pos":{"x":-2.998981095282214,"y":63,"z":95.14482021401687}}}
+{"t":"2026-03-31T12:08:23.180Z","type":"player_seen","payload":{"user":"misteragent0","pos":{"x":-2.998981095282214,"y":63,"z":95.14482021401687}}}
+{"t":"2026-03-31T12:08:27.186Z","type":"player_seen","payload":{"user":"misteragent0","pos":{"x":-2.998981095282214,"y":63,"z":95.14482021401687}}}
+{"t":"2026-03-31T12:08:31.193Z","type":"player_seen","payload":{"user":"misteragent0","pos":{"x":-2.998981095282214,"y":63,"z":95.14482021401687}}}
+{"t":"2026-03-31T12:08:35.198Z","type":"player_seen","payload":{"user":"misteragent0","pos":{"x":-2.9989727978354077,"y":63,"z":95.14485192080716}}}
+{"t":"2026-03-31T12:08:39.198Z","type":"player_seen","payload":{"user":"misteragent0","pos":{"x":-2.9989727978354077,"y":63,"z":95.14485192080716}}}
+{"t":"2026-03-31T12:08:43.203Z","type":"player_seen","payload":{"user":"misteragent0","pos":{"x":-2.9989727978354077,"y":63,"z":95.14485192080716}}}

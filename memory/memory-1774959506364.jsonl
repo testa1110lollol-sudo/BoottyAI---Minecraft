@@ -1,0 +1,3 @@
+{"t":"2026-03-31T12:18:26.443Z","type":"connect_attempt","payload":{"username":"player","host":"127.0.0.1","port":1,"version":"1.13.2"}}
+{"t":"2026-03-31T12:18:26.607Z","type":"error","payload":{"where":"bot","msg":"connect ECONNREFUSED 127.0.0.1:1"}}
+{"t":"2026-03-31T12:18:26.608Z","type":"end","payload":{"reason":"socketClosed"}}
