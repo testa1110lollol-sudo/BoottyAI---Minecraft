@@ -1,6 +1,6 @@
 @echo off
 setlocal EnableExtensions
-title Minecraft 1.13 LAN Dumb AI Bot Launcher
+title Minecraft 1.13 BottyAI - by MrRabbit
 
 chcp 65001 >nul
 
