@@ -1,0 +1,15 @@
+{
+  "name": "minecraft-dumb-ai-113",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Simple self-learning dumb bot for Minecraft 1.13.x LAN worlds",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "dependencies": {
+    "mineflayer": "^4.20.1",
+    "mineflayer-pathfinder": "^2.4.5",
+    "vec3": "^0.1.7"
+  }
+}
