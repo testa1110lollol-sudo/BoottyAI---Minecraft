@@ -1,4 +1,4 @@
-# 🤖 DumbLearner — Автономный Minecraft Бот
+# 🤖 BottyAI — Автономный Minecraft Бот
 
 Умный бот для Minecraft, который самостоятельно выживает, собирает ресурсы, крафтит инструменты и исследует мир. Построен на [Mineflayer](https://github.com/PrismarineJS/mineflayer).
 
