@@ -1,129 +1,134 @@
 @echo off
 setlocal EnableExtensions
-title Minecraft 1.13 BottyAI - by MrRabbit
-
 chcp 65001 >nul
 
+set "BAT_LANG=en"
+if exist "%~dp0Settings.txt" (
+  for /f "usebackq tokens=1,* delims==" %%A in (`findstr /i /b /c:"Launglage=" /c:"Language=" "%~dp0Settings.txt" 2^>nul`) do (
+    if /i "%%A"=="Launglage" set "BAT_LANG=%%B"
+    if /i "%%A"=="Language" set "BAT_LANG=%%B"
+  )
+)
+if /i not "%BAT_LANG%"=="ru" if /i not "%BAT_LANG%"=="en" set "BAT_LANG=en"
+
+for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0launcher_helper.ps1" text -Lang "%BAT_LANG%" -Key "TITLE_TXT"`) do set "TITLE_TXT=%%I"
+for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0launcher_helper.ps1" text -Lang "%BAT_LANG%" -Key "BANNER_TXT"`) do set "BANNER_TXT=%%I"
+for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0launcher_helper.ps1" text -Lang "%BAT_LANG%" -Key "ERR_NODE"`) do set "ERR_NODE=%%I"
+for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0launcher_helper.ps1" text -Lang "%BAT_LANG%" -Key "ERR_PROC"`) do set "ERR_PROC=%%I"
+for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0launcher_helper.ps1" text -Lang "%BAT_LANG%" -Key "OPEN_MC"`) do set "OPEN_MC=%%I"
+for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0launcher_helper.ps1" text -Lang "%BAT_LANG%" -Key "ERR_VER1"`) do set "ERR_VER1=%%I"
+for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0launcher_helper.ps1" text -Lang "%BAT_LANG%" -Key "ERR_VER2"`) do set "ERR_VER2=%%I"
+for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0launcher_helper.ps1" text -Lang "%BAT_LANG%" -Key "OK_FOUND"`) do set "OK_FOUND=%%I"
+for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0launcher_helper.ps1" text -Lang "%BAT_LANG%" -Key "OPEN_LAN"`) do set "OPEN_LAN=%%I"
+for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0launcher_helper.ps1" text -Lang "%BAT_LANG%" -Key "LAN_STEP"`) do set "LAN_STEP=%%I"
+for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0launcher_helper.ps1" text -Lang "%BAT_LANG%" -Key "LAN_AUTO"`) do set "LAN_AUTO=%%I"
+for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0launcher_helper.ps1" text -Lang "%BAT_LANG%" -Key "ASK_PORT"`) do set "ASK_PORT=%%I"
+for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0launcher_helper.ps1" text -Lang "%BAT_LANG%" -Key "WARN_NUM"`) do set "WARN_NUM=%%I"
+for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0launcher_helper.ps1" text -Lang "%BAT_LANG%" -Key "WARN_RANGE"`) do set "WARN_RANGE=%%I"
+for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0launcher_helper.ps1" text -Lang "%BAT_LANG%" -Key "WARN_CONN1"`) do set "WARN_CONN1=%%I"
+for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0launcher_helper.ps1" text -Lang "%BAT_LANG%" -Key "WARN_CONN2"`) do set "WARN_CONN2=%%I"
+for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0launcher_helper.ps1" text -Lang "%BAT_LANG%" -Key "BOT_NAME_TXT"`) do set "BOT_NAME_TXT=%%I"
+for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0launcher_helper.ps1" text -Lang "%BAT_LANG%" -Key "INSTALLING"`) do set "INSTALLING=%%I"
+for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0launcher_helper.ps1" text -Lang "%BAT_LANG%" -Key "ERR_INSTALL"`) do set "ERR_INSTALL=%%I"
+for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0launcher_helper.ps1" text -Lang "%BAT_LANG%" -Key "STARTING"`) do set "STARTING=%%I"
+for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0launcher_helper.ps1" text -Lang "%BAT_LANG%" -Key "ENDED"`) do set "ENDED=%%I"
+for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0launcher_helper.ps1" text -Lang "%BAT_LANG%" -Key "DISCONNECT_HINT"`) do set "DISCONNECT_HINT=%%I"
+
+title %TITLE_TXT%
+
 echo ==========================================
-echo   Minecraft 1.13 Dumb AI Bot Launcher
+echo   %BANNER_TXT%
 echo ==========================================
 echo.
 
 where node >nul 2>&1
 if errorlevel 1 (
-  echo [ERROR] Node.js is not installed. Please install Node.js 18+ and try again.
+  echo %ERR_NODE%
   pause
   exit /b 1
 )
 
 set "MC_PID="
-for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -Command "$p = Get-CimInstance Win32_Process | Where-Object { $_.Name -match '^(javaw?\\.exe|Minecraft.*\\.exe)$' } | Where-Object { ($_.CommandLine -match 'net\\.minecraft\\.client\\.main\\.Main|--gameDir|\\.minecraft') -or ($_.Name -match '^Minecraft') } | Select-Object -First 1 -ExpandProperty ProcessId; if($p){$p}"`) do (
-  set "MC_PID=%%I"
-)
+for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0launcher_helper.ps1" get-minecraft-pid`) do set "MC_PID=%%I"
 
 if not defined MC_PID (
-  for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -Command "$p = Get-Process -Name java,javaw -ErrorAction SilentlyContinue | Where-Object { $_.MainWindowTitle -match '^Minecraft' -and $_.MainWindowTitle -notmatch 'Launcher' } | Select-Object -First 1 -ExpandProperty Id; if($p){$p}"`) do (
-    set "MC_PID=%%I"
-  )
-)
-
-if not defined MC_PID (
-  echo [ERROR] Minecraft Java process was not found.
-  echo Open Minecraft Java 1.13.x first, then run this BAT again.
+  echo %ERR_PROC%
+  echo %OPEN_MC%
   pause
   exit /b 1
 )
 
 set "MC_CMD="
-for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -Command "$p = Get-CimInstance Win32_Process | Where-Object { $_.ProcessId -eq [int]$env:MC_PID } | Select-Object -First 1 -ExpandProperty CommandLine; if($p){$p}"`) do (
-  set "MC_CMD=%%I"
-)
+for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0launcher_helper.ps1" get-cmdline -TargetPid "%MC_PID%"`) do set "MC_CMD=%%I"
 
 set "MC_TITLE="
-for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -Command "$t = (Get-Process -Id $env:MC_PID -ErrorAction SilentlyContinue).MainWindowTitle; if($t){$t}"`) do (
-  set "MC_TITLE=%%I"
-)
+for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0launcher_helper.ps1" get-title -TargetPid "%MC_PID%"`) do set "MC_TITLE=%%I"
 
 set "MC_OK="
-for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -Command "$ok=$false; $cmd=$env:MC_CMD; $title=$env:MC_TITLE; if($cmd -like '*1.13*'){ $ok=$true }; if(-not $ok -and $title -like '*1.13*'){ $ok=$true }; if(-not $ok){ $log=$env:MC_LOG; if(-not $log){ $log=Join-Path $env:APPDATA '.minecraft\\logs\\latest.log' }; if(Test-Path $log){ $txt=(Get-Content $log -Tail 400 -ErrorAction SilentlyContinue | Out-String); if($txt -like '*Minecraft*1.13*'){ $ok=$true } } }; if($ok){ 'YES' }"`) do (
-  set "MC_OK=%%I"
-)
+for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0launcher_helper.ps1" confirm-version-pid -TargetPid "%MC_PID%"`) do set "MC_OK=%%I"
 
-if /I not "%MC_OK%"=="YES" (
-  echo [ERROR] Could not confirm Minecraft version 1.13.x.
-  echo This bot supports Minecraft 1.13.x only.
+if /i not "%MC_OK%"=="YES" (
+  echo %ERR_VER1%
+  echo %ERR_VER2%
   if defined MC_TITLE echo Window title: %MC_TITLE%
   if defined MC_CMD echo Process cmd: %MC_CMD%
   pause
   exit /b 1
 )
 
-echo [OK] Minecraft process found (PID %MC_PID%) and version 1.13.x confirmed.
+echo %OK_FOUND%
 echo.
-echo Open your world to LAN now:
-echo   ESC ^> Open to LAN ^> Start LAN World
+echo %OPEN_LAN%
+echo   %LAN_STEP%
 echo.
 
 set "MC_PORT="
-for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0detect_lan_port.ps1"`) do (
-  if not defined MC_PORT set "MC_PORT=%%I"
-)
+for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0detect_lan_port.ps1"`) do if not defined MC_PORT set "MC_PORT=%%I"
+if defined MC_PORT echo %LAN_AUTO% %MC_PORT%
 
-if defined MC_PORT (
-  echo [OK] Auto-detected LAN port from log: %MC_PORT%
-)
-
-:ASK_PORT
-if not defined MC_PORT (
-  set /p MC_PORT="Enter LAN port from Minecraft chat: "
-)
+:ask_port
+if not defined MC_PORT set /p MC_PORT="%ASK_PORT%"
 
 echo %MC_PORT%| findstr /r "^[0-9][0-9]*$" >nul
 if errorlevel 1 (
-  echo [WARN] Port must be numbers only.
+  echo %WARN_NUM%
   set "MC_PORT="
-  goto ASK_PORT
+  goto ask_port
 )
 
 set "PORT_RANGE_OK="
-for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -Command "$ok = ([int]$env:MC_PORT -ge 1 -and [int]$env:MC_PORT -le 65535); if($ok){ 'YES' }"`) do (
-  set "PORT_RANGE_OK=%%I"
-)
-
-if /I not "%PORT_RANGE_OK%"=="YES" (
-  echo [WARN] Port must be in range 1..65535.
+for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0launcher_helper.ps1" port-range-ok -Port "%MC_PORT%"`) do set "PORT_RANGE_OK=%%I"
+if /i not "%PORT_RANGE_OK%"=="YES" (
+  echo %WARN_RANGE%
   set "MC_PORT="
-  goto ASK_PORT
+  goto ask_port
 )
 
 set "MC_PORT_OPEN="
-for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -Command "$ok=$false; try { $client=New-Object Net.Sockets.TcpClient; $iar=$client.BeginConnect('127.0.0.1',[int]$env:MC_PORT,$null,$null); if($iar.AsyncWaitHandle.WaitOne(1500)){ $client.EndConnect($iar); $ok=$true }; $client.Close() } catch {}; if($ok){ 'YES' }"`) do (
-  set "MC_PORT_OPEN=%%I"
-)
-
-if /I not "%MC_PORT_OPEN%"=="YES" (
-  echo [WARN] Cannot connect to 127.0.0.1:%MC_PORT%.
-  echo        Check that world is open to LAN and the port is correct.
+for /f "usebackq delims=" %%I in (`powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0launcher_helper.ps1" port-open -Port "%MC_PORT%"`) do set "MC_PORT_OPEN=%%I"
+if /i not "%MC_PORT_OPEN%"=="YES" (
+  echo %WARN_CONN1%%MC_PORT%.
+  echo %WARN_CONN2%
   set "MC_PORT="
-  goto ASK_PORT
+  goto ask_port
 )
 
-set "BOT_NAME=player"
-echo Bot username fixed to: %BOT_NAME%
+set "BOT_NAME=BottyAI"
+echo %BOT_NAME_TXT% %BOT_NAME%
 
 if not exist "memory" mkdir "memory"
 if not exist "node_modules" (
-  echo Installing dependencies first run...
+  echo %INSTALLING%
   call npm install
   if errorlevel 1 (
-    echo [ERROR] Failed to install npm dependencies.
+    echo %ERR_INSTALL%
     pause
     exit /b 1
   )
 )
 
 echo.
-echo Starting bot...
+echo %STARTING%
 set "MC_HOST=127.0.0.1"
 set "MC_VERSION=1.13.2"
 set "BOT_USERNAME=%BOT_NAME%"
@@ -131,10 +136,7 @@ node bot.js
 set "BOT_EXIT=%ERRORLEVEL%"
 
 echo.
-echo Bot session ended. Exit code: %BOT_EXIT%
-if not "%BOT_EXIT%"=="0" (
-  echo If disconnected immediately, read Kicked/Error/Disconnected reason above.
-)
+echo %ENDED% %BOT_EXIT%
+if not "%BOT_EXIT%"=="0" echo %DISCONNECT_HINT%
 pause
-endlocal
-
+exit /b 0

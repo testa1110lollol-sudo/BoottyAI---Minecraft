@@ -1,0 +1,4 @@
+# Bot settings
+# Restart the bot after editing this file.
+# Launglage options: ru | en
+Launglage=ru
