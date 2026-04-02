@@ -1,9 +1,9 @@
-# 🤖 BottyAI — Автономный Minecraft Бот
+# 🤖 BottyAI — Автономный Minecraft Бот (APLHA)
 
 Умный бот для Minecraft, который самостоятельно выживает, собирает ресурсы, крафтит инструменты и исследует мир. Построен на [Mineflayer](https://github.com/PrismarineJS/mineflayer).
 
 ![Version](https://img.shields.io/badge/Minecraft-1.13.2-green)
-![Node](https://img.shields.io/badge/Node.js-16+-blue)
+![Node](https://img.shields.io/badge/Node.js-18+-blue)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
 ---
